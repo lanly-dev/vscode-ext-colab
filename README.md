@@ -17,6 +17,12 @@ First pair: **Audio Lab** (`vscode-audio-lab`) calls **Easy Media Converter**
 `emc.ncp.cropMedia` and conversion to `emc.ncp.convertWav`, gated on the
 installed EMC version (`>= 3.1.0`).
 
+**Simpler path for this pair:** the [`emc-audio-lab/`](emc-audio-lab/) folder
+is self-contained — run its `setup.ps1` / `setup.sh` to clone both extensions
+inside it (gitignored), then open that folder in VS Code and F5. No sibling
+clones or multi-root workspace needed. The sibling layout below is the
+general pattern for other pairs.
+
 ## Layout expected
 
 The member extensions are **sibling clones** of this repo (paths in the

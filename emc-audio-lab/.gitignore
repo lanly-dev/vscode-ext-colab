@@ -1,0 +1,8 @@
+# Cloned by setup.ps1 / setup.sh — never commit the member extensions here.
+# They keep their own repos; this folder is only the dev-host wiring.
+/audio-lab/
+/vscode-emc/
+
+# Crop outputs produced while testing in test-workspace/
+test-workspace/*-cropped.wav
+test-workspace/*-cropped.mp3

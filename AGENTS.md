@@ -9,6 +9,9 @@ Rules:
 
 - Member extensions live in **sibling clones**; reference them with relative
   paths only. No absolute local paths anywhere in this repo (it is public).
+  Exception: a pair folder (e.g. `emc-audio-lab/`) may clone its members
+  *inside itself* via its setup script — those clones must be gitignored
+  there, never committed.
 - Cross-extension calls need both extensions in **one** extension host — every
   launch configuration must pass one `--extensionDevelopmentPath` per member.
 - When a cross-extension contract changes (command id, arguments, version
