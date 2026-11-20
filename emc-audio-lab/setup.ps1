@@ -1,11 +1,11 @@
 # Clone (or update) Audio Lab + EMC into this folder and install their deps.
-# The clones are gitignored — this folder is only the dev-host wiring.
+# The clones are gitignored - this folder is only the dev-host wiring.
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
 
 function Clone-Or-Update($Dir, $Url, $Branch) {
   if (Test-Path "$Dir/.git") {
-    Write-Host "== $Dir already cloned — pulling =="
+    Write-Host "== $Dir already cloned - pulling =="
     git -C $Dir pull --ff-only
   } else {
     Write-Host "== cloning $Url -> $Dir (branch: $Branch) =="
