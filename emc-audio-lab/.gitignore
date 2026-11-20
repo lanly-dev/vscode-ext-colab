@@ -3,6 +3,10 @@
 /audio-lab/
 /vscode-emc/
 
+# Clean VS Code profile used by the "clean profile" launch config
+# (dedicated user-data + extensions dirs — delete it to reset the test env).
+/.test-profile/
+
 # Crop outputs produced while testing in test-workspace/
 test-workspace/*-cropped.wav
 test-workspace/*-cropped.mp3
