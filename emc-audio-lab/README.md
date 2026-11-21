@@ -38,11 +38,22 @@ repos and are never committed here.
 
 ## Run
 
-**Reliable clean window (recommended):** run `./run-clean.ps1` (Windows) or
-`./run-clean.sh`. It builds both extensions, then launches VS Code through
-the `code` CLI with the isolated `.test-profile/` user-data and extensions
-dirs and both `--extensionDevelopmentPath`s. Use this route for the
-"only these 2 extensions" test — see the caveat below.
+**Clean dev environment (recommended):** run `./run-clean.ps1` (Windows)
+or `./run-clean.sh`. It launches VS Code through the `code` CLI with the
+isolated `.test-profile/` user-data and extensions dirs, containing only:
+
+- **EMC — really installed.** The script packages EMC as a `.vsix` and
+  installs it into `.test-profile`, so it appears under **Installed** in
+  the Extensions view and Audio Lab's version gate sees a real EMC 3.1.0.
+- **Audio Lab — loaded from source** via `--extensionDevelopmentPath`
+  (its `.vsix` packaging is currently blocked by its own manifest:
+  `@types/vscode ^1.145.0` vs `engines.vscode ^1.144.0`).
+
+Verify in the window: Command Palette → **Developer: Show Running
+Extensions** should list both `lanly-dev.audio-lab` and
+`lanly-dev.easymediaconverter`. Note EMC has **no activity-bar icon** —
+its UI is an "Easy Media Converter" section in the Explorer plus
+right-click menus on media files, so a loaded EMC is easy to miss.
 
 **Via F5:** open **this folder** (`emc-audio-lab`) in VS Code — not a
 `.code-workspace` — then Run and Debug → pick a configuration → F5:
