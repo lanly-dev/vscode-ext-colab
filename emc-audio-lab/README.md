@@ -38,8 +38,14 @@ repos and are never committed here.
 
 ## Run
 
-1. Open **this folder** (`emc-audio-lab`) in VS Code — not a `.code-workspace`.
-2. Run and Debug → pick a configuration → F5:
+**Reliable clean window (recommended):** run `./run-clean.ps1` (Windows) or
+`./run-clean.sh`. It builds both extensions, then launches VS Code through
+the `code` CLI with the isolated `.test-profile/` user-data and extensions
+dirs and both `--extensionDevelopmentPath`s. Use this route for the
+"only these 2 extensions" test — see the caveat below.
+
+**Via F5:** open **this folder** (`emc-audio-lab`) in VS Code — not a
+`.code-workspace` — then Run and Debug → pick a configuration → F5:
    - **EMC + Audio Lab (clean profile, only these 2)** — the recommended
      test config. Same as below, plus `--user-data-dir` /
      `--extensions-dir` pointing at this folder's `.test-profile/`, so the
@@ -61,6 +67,16 @@ repos and are never committed here.
 
 Notes:
 
+- **Caveat — F5 and clean profiles:** the `extensionHost` debugger does not
+  reliably honor `--user-data-dir` / `--extensions-dir`; the dev host can
+  fall back to your normal profile, so your installed extensions appear
+  anyway. The clean F5 config also passes `--disable-extensions` (dev
+  extensions are exempt), but if you still see your installed extensions
+  in an F5 host, use `run-clean` — the CLI honors the dirs.
+- **Built-in extensions always show.** Git, Emmet, JSON, etc. ship inside
+  VS Code itself, grouped under "Built-in" in the Extensions view. No
+  profile or flag removes them; "only the 2" means only the 2 under
+  *Installed*, plus the built-ins.
 - "Loaded from source" is not "installed": a dev extension shadows an
   installed copy with the same ID inside the dev host only.
 - `test-workspace/` holds the 15 s tone fixtures (WAV + MP3) for the crop
